@@ -12,23 +12,29 @@ public class MessageBean {
 	private String productID;
 	private String clientID;
 	private String viewID;
+	private String appType;
+	private String eventType;
+	private String deviceType;
 	
 	public static MessageBean parse(String line) throws UnsupportedEncodingException {
 		MessageBean bean = new MessageBean();
 		line = URLDecoder.decode(line, "utf-8");
 		try {
-			bean.bitrate = Long.parseLong(MessageBean.getParameter(line, "bitrate"));
+			bean.setBitrate(Long.parseLong(MessageBean.getParameter(line, "bitrate")));
 		} catch (NumberFormatException e) {
-			bean.bitrate = 0;
+			bean.setBitrate(0);
 		}
-		bean.clientID = MessageBean.getParameter(line, "clientID");
+		bean.setClientID(MessageBean.getParameter(line, "clientID"));
 		try {
-			bean.msgID = Long.parseLong(MessageBean.getParameter(line, "msgID"));
+			bean.setMsgID(Long.parseLong(MessageBean.getParameter(line, "msgID")));
 		} catch (NumberFormatException e) {
-			bean.msgID = 0;
+			bean.setMsgID(0);
 		}
-		bean.productID = MessageBean.getParameter(line, "productID");
-		bean.viewID = MessageBean.getParameter(line, "viewID");
+		bean.setProductID(MessageBean.getParameter(line, "productID"));
+		bean.setViewID(MessageBean.getParameter(line, "viewID"));
+		bean.setAppType(MessageBean.getParameter(line, "appType"));
+		bean.setEventType(MessageBean.getParameter(line, "eventType"));
+		bean.setDeviceType(MessageBean.getParameter(line, "deviceType"));
 		return bean;
 	}
 	
@@ -71,6 +77,26 @@ public class MessageBean {
 	}
 	public void setViewID(String viewID) {
 		this.viewID = viewID;
+	}
+	public String getAppType() {
+		return appType;
+	}
+	public void setAppType(String appType) {
+		this.appType = appType;
+	}
+	public String getEventType() {
+		return eventType;
+	}
+	public void setEventType(String eventType) {
+		this.eventType = eventType;
+	}
+
+	public String getDeviceType() {
+		return deviceType;
+	}
+
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
 	}
 
 	
