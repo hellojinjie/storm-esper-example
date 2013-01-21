@@ -27,10 +27,10 @@ import com.neulion.stream.MessageBean;
  * @author hellojinjie
  * @Date 2013-1-16
  */
-public class OnlineVisitorsBolt extends BaseRichBolt {
+public class TenSecondOnlineVisitorsBolt extends BaseRichBolt {
 
 	private static final long serialVersionUID = 1L;
-	private static final Log log = LogFactory.getLog(OnlineVisitorsBolt.class);
+	private static final Log log = LogFactory.getLog(TenSecondOnlineVisitorsBolt.class);
 	
 	private OutputCollector collector;
 	private EPServiceProvider epService;
