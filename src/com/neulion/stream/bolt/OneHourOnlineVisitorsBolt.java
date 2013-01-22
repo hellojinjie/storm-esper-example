@@ -53,7 +53,8 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 		EPStatement visitorsStatement = epService.getEPAdministrator().
 				createEPL("select count(distinct Log.clientID) as visitors, " + 
 						"count(distinct Log.viewID) as views " + 
-						"from Log.win:time(120 second) where Log.eventType = \"HEARTBEAT\" " + 
+						"from Log.win:time(120 second) " + 
+						"where Log.eventType = \"HEARTBEAT\" " + 
 						"output snapshot every 2 sec");
 		visitorsStatement.addListener(new UpdateListener() {
 
@@ -72,8 +73,8 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 		EPStatement appTypeStatement = epService.getEPAdministrator().createEPL(
 				"select count(distinct Log.clientID) as visitors, Log.appType as appType " +
 				"from Log.win:time(120 second) where Log.eventType = \"HEARTBEAT\" " +
-				"group by Log.appType " +
-				"output snapshot every 2 second "
+				"group by Log.appType  " +
+				"output snapshot every 2 second order by visitors desc "
 		);
 		appTypeStatement.addListener(new UpdateListener() {
 
@@ -101,8 +102,8 @@ public class OneHourOnlineVisitorsBolt extends BaseRichBolt {
 		EPStatement deviceTypeStatement = epService.getEPAdministrator().createEPL(
 				"select count(distinct Log.clientID) as visitors, Log.deviceType as deviceType " +
 				"from Log.win:time(120 second) where Log.eventType = \"HEARTBEAT\" " +
-				"group by Log.deviceType " +
-				"output snapshot every 2 second "
+				"group by Log.deviceType  " +
+				"output snapshot every 2 second  order by visitors desc "
 		);
 		deviceTypeStatement.addListener(new UpdateListener() {
 
