@@ -18,3 +18,6 @@ unzip the data file in data directory: drcSimulator.1.2013-01-07 00.7z
 rename config.properties-template to config.properties, make sure parameter onehourlogfile has the right value  
 if you are a developer, do not forget to add config.properties to svn/git ignore list  
 Run this main class, you will get the output continuously  
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hellojinjie/storm-esper-example/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
